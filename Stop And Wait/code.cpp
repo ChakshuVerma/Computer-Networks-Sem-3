@@ -1,3 +1,5 @@
+//NOTE: The Event Of Loosing An ACK Or Data Packet Depends On Random Function Present In Line 54 and Line 82.
+
 #include<bits/stdc++.h>
 #include<windows.h>                     //For Sleep() and system() function calls
 using namespace std;
