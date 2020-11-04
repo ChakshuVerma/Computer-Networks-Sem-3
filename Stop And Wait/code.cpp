@@ -19,7 +19,7 @@ class Recieving
         cout<<"RECIEVER SIDE  "<<endl;
         cout<<"=============="<<endl;
         cout<<endl<<endl;
-        cout<<"PHYSICAL LAYER "<<endl<<endl;
+        cout<<"[PHYSICAL LAYER] "<<endl<<endl;
         cout<<"Signal Recieved via Communication Channel"<<endl;
         cout<<"Demodulating Data ";
         for(int i=0;i<4;i++)
@@ -38,7 +38,7 @@ class Recieving
     void RecievingDataLink(string data)
     {
         cout<<endl<<endl;
-        cout<<"DATA LINK LAYER"<<endl<<endl;
+        cout<<"[DATA LINK LAYER]"<<endl<<endl;
         cout<<"Packet With SeqNo. "<<SeqNo<<" And Data '"<<data<<"' Recieved From Physical Layer "<<endl;
         cout<<"Making Frame";
         for(int i=0;i<4;i++)
@@ -48,7 +48,7 @@ class Recieving
         }
         cout<<"\nFrame Sent To Network Layer "<<endl;
         system("pause");
-        cout<<endl<<endl<<"------ACK SENT------"<<endl<<endl;
+        cout<<endl<<"------ACK SENT------"<<endl<<endl<<endl;
 
         //If x comes out to be 0 then we say packet has been lost
         x=rand()%2;
@@ -67,7 +67,7 @@ class Sending
     void SendingPhysical(string data)
     {
         cout<<endl<<endl;
-        cout<<"PHYSICAL LAYER "<<endl<<endl;
+        cout<<"[PHYSICAL LAYER]"<<endl<<endl;
         cout<<"Packet Recieved From Data Link Layer "<<endl;
         cout<<"Modulating Data ";
         for(int i=0;i<4;i++)
@@ -92,9 +92,9 @@ class Sending
     void SendingDataLink(string data)
     {
         cout<<endl<<endl;
-        cout<<"DATA LINK LAYER"<<endl<<endl;
+        cout<<"[DATA LINK LAYER]"<<endl<<endl;
         cout<<"Packet Recieved From Network Layer "<<endl;
-        cout<<"Making Frame";
+        cout<<"Making Frame With Seq no. "<<SeqNo<<" ";
         for(int i=0;i<4;i++)
         {
             Sleep(500);
@@ -111,7 +111,7 @@ class Sending
     void SendingNetwork(string data)
     {
         SeqNo=0;
-        cout<<"\nSending Datagram With Seq no. "<<SeqNo<<" To Data Link Layer";
+        cout<<"\nSending Datagram To Data Link Layer";
         for(int i=0;i<4;i++)
         {
             Sleep(500);
@@ -123,7 +123,7 @@ class Sending
 
         //This Statement is Run Only When All The Functions Return
         if(flag==-1)
-            cout<<"SENDING SIDE NETWORK LAYER\n\nAcknowledgement Recieved\n ";
+            cout<<"SENDING SIDE NETWORK LAYER\n=========================\n\nAcknowledgement Recieved\n";
         else
         {
             cout<<endl<<endl<<endl<<"--TimeOut---"<<endl;
@@ -143,16 +143,16 @@ int main()
 
     cout<<"CONNECTION ESTABLISHED "<<endl;
     cout<<"====================== ";
-    while(ch)
+    while(ch==1)
     {
         cout<<"\n\n\n\nEnter Data In Packet : ";
-        cin>>data;
+        getline(cin,data);
         system("cls");
         cout<<" SENDER SIDE "<<endl;
         cout<<" ==========="<<endl<<endl;
-        cout<<"NETWORK LAYER"<<endl<<endl;
+        cout<<"[NETWORK LAYER]"<<endl<<endl;
         cout<<"Making Datagram";
-        S.SendingNetwork(data);                                        //Calling Sending Side  Transport Layer
+        S.SendingNetwork(data);                                        //Calling Sender Side Transport Layer
         system("pause");
         system("cls");
         cout<<"Press 1 to Send Another Packet : ";
@@ -160,8 +160,7 @@ int main()
         if(SeqNo==0)
             SeqNo=1;
     }
-    cout<<"CONNECTION OVER"<<endl;
-    cout<<"==============="<<endl;
-    system("pause");
+    cout<<"\nCONNECTION DISABLED"<<endl;
+    cout<<"==================="<<endl;
     return 0;
 }
