@@ -2,7 +2,7 @@
 
 #include<bits/stdc++.h>
 #include<windows.h>                     //For Sleep() and system() function calls
-using namespace std;
+using namespace std; 
 
 int srand();
 int SeqNo,flag=-1,x;
